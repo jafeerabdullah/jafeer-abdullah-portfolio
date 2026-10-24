@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { motion } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { ArrowUpRight, Download, FileText, Maximize2 } from 'lucide-react'
 import type { Certificate } from '../data/portfolio'
 

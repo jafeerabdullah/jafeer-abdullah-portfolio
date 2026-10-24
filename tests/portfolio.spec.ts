@@ -12,7 +12,7 @@ test('real identity, optimized assets, resume, and original repository links wor
   })
   await page.goto('/')
   expect(sceneRequests).toEqual([])
-  await expect(page).toHaveTitle('Jafeer Abdullah — Full Stack Software Developer')
+  await expect(page).toHaveTitle('Jafeer Abdullah | Full-Stack Developer & Software Portfolio')
   await expect(page.getByRole('heading', { level: 1 })).toContainText('JAFEER ABDULLAH')
   await expect(page.getByAltText('Jafeer Abdullah wearing a suit')).toBeVisible()
   const download = page.waitForEvent('download')

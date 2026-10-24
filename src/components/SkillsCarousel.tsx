@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, MouseEvent, PointerEvent, RefObject } from 'react'
-import { AnimatePresence, motion, useInView, useReducedMotion, useTransform } from 'motion/react'
+import { AnimatePresence, motion, useInView, useTransform } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import type { MotionValue } from 'motion/react'
 import { ArrowLeft, ArrowRight, Code2, Database, Layers3, Pause, Play, Wrench } from 'lucide-react'
 import { skillGroups } from '../data/portfolio'
@@ -419,8 +420,7 @@ export function SkillsCarousel() {
   const direction = useRef<1 | -1>(1)
   const scene = useRef<HTMLDivElement>(null)
   const visible = useInView(scene)
-  const initialReduced = useReducedMotion()
-  const [reduced, setReduced] = useState(Boolean(initialReduced))
+  const reduced = useReducedMotion()
   const { ref, width } = useWidth()
   const interact = useCallback(() => setPauseUntil(performance.now() + 4000), [])
   const chooseCategory = (index: number) => {
@@ -437,14 +437,6 @@ export function SkillsCarousel() {
     sync()
     document.addEventListener('visibilitychange', sync)
     return () => document.removeEventListener('visibilitychange', sync)
-  }, [])
-  useEffect(() => {
-    // This installed Motion version reads the preference only on mount.
-    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const sync = () => setReduced(preference.matches)
-    sync()
-    preference.addEventListener('change', sync)
-    return () => preference.removeEventListener('change', sync)
   }, [])
   return (
     <div

@@ -29,7 +29,7 @@ npm run preview
 ## Content and assets
 
 - `src/data/portfolio.ts` holds profile information, project descriptions, verified repository URLs, skills, and certifications.
-- The original supplied CV is served at `/documents/Jafeer-Abdullah-CV.pdf` and downloads directly from the navigation and cover.
+- The latest supplied résumé (`Jafeer_Abdullah_Resume .pdf`) replaces the previous CV at `/documents/Jafeer-Abdullah-CV.pdf` and downloads directly from the navigation and cover. The public filename stays stable so existing links continue working.
 - The cover portrait is the supplied `Monochrome Gentleman in a Dark Studio.png`, optimized as `jafeer-studio-portrait.webp`. CSS frames its silhouette without retouching the supplied face or its monochrome treatment. The About section uses the supplied outdoor photograph wearing sunglasses and a striped shirt, preserved as `jafeer-about-sunglasses.jpeg`; the shared portrait transition uses the same photo.
 - ERP and Abu Fashion Store screenshots are downloaded from the respective original GitHub repositories. The Codomax Blog Website preview is an actual screenshot of its public website. Other project graphics are explicitly labeled concept visuals. Graph Performance Analyzer has its own complexity comparison illustration; Student Records & Campus Routes has a student directory card and architectural campus map. These distinct covers are shared by the project cards and their detail dialogs.
 - The certificate archive includes seven unique documents: two Cisco course completion PDFs, ICTA / Open Office training, G.C.E. Ordinary Level, an Energy Club innovation award, the Ahadhiyyah intermediate examination, and Islamic Studies / Arabic Language. The two photos of the same Energy Club award are represented once. The ICTA certificate's printed recipient is preserved as supplied and confirmed by the owner.
@@ -101,7 +101,7 @@ Import [jafeerabdullah/jafeer-abdullah-portfolio](https://github.com/jafeerabdul
 - Build command: `npm run build`.
 - Output directory: `dist`.
 - Node.js: `24.x`, from `package.json`.
-- Environment variables: none required. Vercel's automatically provided public hostname is used only for social metadata.
+- Environment variables: none required. SEO uses the verified production URL; optional `GOOGLE_SITE_VERIFICATION` enables Search Console HTML-tag verification.
 
 Navigation uses section hashes such as `/#skills` and `/#projects`, so reloading those links requests the root page and retains the selected section. The site has no server-side routes or API endpoints.
 
@@ -117,4 +117,12 @@ git commit -m "Update portfolio"
 git push origin main
 ```
 
-Generated builds, installed dependencies, test output, local environment files, and local deployment state in `.vercel/` or `.openai/` are excluded from Git. The original CV, introduction video, project covers, certificate documents, icon sources, and their licenses are included.
+Generated builds, installed dependencies, test output, local environment files, and local deployment state in `.vercel/` or `.openai/` are excluded from Git. The current résumé, introduction video, project covers, certificate documents, icon sources, and their licenses are included.
+
+## SEO and indexing
+
+Production builds render the existing React portfolio to HTML before hydration. The visual design and interactive components remain the same. A browsable `<noscript>` document uses the same project, skill, and certificate data for visitors with JavaScript disabled. Critical fonts and the hero image are preloaded; the Three.js scene stays lazy.
+
+`src/data/seo.ts` defines the canonical URL, sharing metadata, and Person/WebSite structured data. `public/robots.txt` and `public/sitemap.xml` describe the actual single-page site. Preview builds use `noindex` while keeping the production canonical.
+
+See [SEO.md](SEO.md) for validation results, measurements, and the remaining Google Search Console ownership and indexing steps.

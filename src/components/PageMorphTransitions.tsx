@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useReducedMotion } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { PORTRAIT_SNAPSHOT_EVENT } from './PortraitMorph'
 
 const sections = [

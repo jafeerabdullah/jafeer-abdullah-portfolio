@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import type { KeyboardEvent, PointerEvent } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { motion } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import type { Project } from '../data/portfolio'
 import { ProjectVisual } from './ProjectVisual'

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { PointerEvent as ReactPointerEvent } from 'react'
 import { createPortal } from 'react-dom'
-import { animate, AnimatePresence, motion, useMotionValue, useReducedMotion } from 'motion/react'
+import { animate, AnimatePresence, motion, useMotionValue } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import {
   ArrowLeft,
   ArrowRight,

@@ -6,10 +6,10 @@ import {
   MotionConfig,
   motion,
   useInView,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from 'motion/react'
+import { useReducedMotion } from './hooks/useReducedMotion'
 import {
   ArrowDown,
   ArrowDownRight,
@@ -387,7 +387,7 @@ function About() {
                 it all <span className="serif-word">begins.</span>
               </h2>
               <p className="lead">
-                I’m Jafeer, a software developer who enjoys making complicated things feel a little
+                I’m Jafeer Abdullah, a software developer who enjoys making complicated things feel a little
                 simpler.
               </p>
               <p>

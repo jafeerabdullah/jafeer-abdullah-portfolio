@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, useReducedMotion } from 'motion/react'
+import { motion } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { ArrowUpRight, Check, Github, X } from 'lucide-react'
 import type { Project } from '../data/portfolio'
 import { ProjectVisual } from './ProjectVisual'

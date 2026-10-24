@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { motion, useInView, useReducedMotion } from 'motion/react'
+import { motion, useInView } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import './HeroTypewriter.css'
 
 const roles = [

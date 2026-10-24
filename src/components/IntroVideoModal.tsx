@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, useReducedMotion } from 'motion/react'
+import { motion } from 'motion/react'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { ArrowUpRight, Pause, Play, RotateCcw, Volume2, VolumeX, X } from 'lucide-react'
 import './IntroVideoModal.css'
 

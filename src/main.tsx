@@ -8,8 +8,11 @@ import '@fontsource/dm-mono/latin-400.css'
 import './styles.css'
 import App from './App'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const app = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+const root = document.getElementById('root')!
+if (root.dataset.prerendered === 'true') ReactDOM.hydrateRoot(root, app)
+else ReactDOM.createRoot(root).render(app)
