@@ -1,0 +1,15 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.svg text
+*.pdf binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+
+# Preserve the official logo and license source bytes, including line endings.
+public/icons/skills/*.svg binary
+public/icons/skills/LICENSE.* -text -whitespace

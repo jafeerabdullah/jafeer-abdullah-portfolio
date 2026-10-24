@@ -1,0 +1,98 @@
+[
+  {
+    "name": "canva",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/canva/canva-original.svg",
+    "sha256": "56cd98419761b907cc959d3dae1c5dc74bbb47ec66071ae2ea4aeede0df3d916"
+  },
+  {
+    "name": "dart",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/dart/dart-original.svg",
+    "sha256": "8dec3d6f6d92d5c8db294baf7ea89cbad5c3dd0f7fde5ca972ffc6cebf9b2d40"
+  },
+  {
+    "name": "firebase",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/firebase/firebase-original.svg",
+    "sha256": "6069e979418301117abe2223b62ffb9cedd8c5118fbd805da77170629eaef49c"
+  },
+  {
+    "name": "flutter",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/flutter/flutter-original.svg",
+    "sha256": "c188249043aecad16b31eaa230474643270a8d8200b897af54a97949cb88e4ae"
+  },
+  {
+    "name": "git",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/git/git-original.svg",
+    "sha256": "717a57ea97bf7e86de721dab3e68afac66332a10676d5c9abce4ae6a5a9c9983"
+  },
+  {
+    "name": "github",
+    "source": "https://brand.github.com/GitHub_Logos.zip",
+    "entry": "GitHub Logos/SVG/GitHub_Invertocat_White.svg",
+    "sha256": "ccd84c89b1056345608fc3489357f8acc7397e49a3cdc2d418b6c8016911d47b"
+  },
+  {
+    "name": "illustrator",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/illustrator/illustrator-original.svg",
+    "sha256": "09f05a7af7975a77c5077d86f27ca33746f59cd54d51e85bf374147760dbec75"
+  },
+  {
+    "name": "java",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/java/java-original.svg",
+    "sha256": "7582e518a9c02425f97155e5a3bd39d1a3a7d421b78caf9c8df7443dad3edc5d"
+  },
+  {
+    "name": "javascript",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/javascript/javascript-original.svg",
+    "sha256": "0656ff65fc8eeacda5c78d7f9ffe91ec1eb919db64f56e0b7dcd460af4bbd36c"
+  },
+  {
+    "name": "jira",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/jira/jira-original.svg",
+    "sha256": "e5010dd0056d130e32fa3d0dc589aa1288370b525b4123658ea6eb90f53ca1db"
+  },
+  {
+    "name": "laravel",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/laravel/laravel-original.svg",
+    "sha256": "b293960cd642537d2b19a1442168a396f25bdd31eb10f4f92447623cfc5730df"
+  },
+  {
+    "name": "mysql",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/mysql/mysql-original.svg",
+    "sha256": "f73fa5d6b9da33fbf540ff96f5360c24b6d29d883ecfe6fcaecf89a8d3456067"
+  },
+  {
+    "name": "nodejs",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/nodejs/nodejs-original.svg",
+    "sha256": "3218687c5ea24a4d4c0a33dc5c287da38c33a72dcfe9382469d7ce4e0bf661fb"
+  },
+  {
+    "name": "photoshop",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/photoshop/photoshop-original.svg",
+    "sha256": "4242c73530668189563cbf1ca1c1ceadc6886751c6df188c2a6425e9faa4acaf"
+  },
+  {
+    "name": "php",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/php/php-original.svg",
+    "sha256": "f22619a19c99a123e4678d71826f65f223721a739631dff46de39827c9ee0633"
+  },
+  {
+    "name": "power-bi",
+    "source": "https://raw.githubusercontent.com/microsoft/PowerBI-Icons/24f1db8bdfab951c25db591772140d2f4ec5bc1e/SVG/Power-BI.svg",
+    "sha256": "55daee85ccbe0d410909cd3b2b2d974d9a450ca3c6208992eec99fa9fa7b0b8d"
+  },
+  {
+    "name": "python",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/python/python-original.svg",
+    "sha256": "71493b4a732f0532b3a03a7a95da3ee11a65766367c8303b901ffbe7bf91a3a2"
+  },
+  {
+    "name": "supabase",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/supabase/supabase-original.svg",
+    "sha256": "bb8d502577de5e864437542bc2655b5d4d4782589386fc4583d912f46ac73181"
+  },
+  {
+    "name": "typescript",
+    "source": "https://raw.githubusercontent.com/devicons/devicon/6a37858047b0e8d9c9c0e68f4a071fc410652e89/icons/typescript/typescript-original.svg",
+    "sha256": "c9191199f4049920c2fc19035b8a6664f37f4689fcd9e8434e786097e78863f0"
+  }
+]

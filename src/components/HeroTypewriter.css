@@ -1,0 +1,75 @@
+/* One fixed line preserves the existing headline, paragraph, and button positions. */
+.hero-headline .hero-typewriter {
+  display: flex;
+  align-items: center;
+  block-size: 1.3em;
+  min-inline-size: 0;
+  white-space: nowrap;
+}
+
+.hero-typewriter .hero-role-emoji {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  inline-size: 1.1em;
+  block-size: 1em;
+  margin-inline-end: 0.38em;
+  font-size: 0.84em;
+  line-height: 1;
+  animation: hero-role-icon-in 180ms ease-out both;
+}
+
+.hero-typewriter .hero-role-text {
+  flex: 0 0 auto;
+  white-space: pre;
+}
+
+.hero-typewriter .hero-role-cursor {
+  display: inline-block;
+  flex: 0 0 1.5px;
+  inline-size: 1.5px;
+  block-size: 0.85em;
+  margin-inline-start: 0.15em;
+  border-radius: 1px;
+  background: var(--gold, #b69a63);
+  opacity: 1;
+}
+
+.hero-typewriter[data-phase='holding'][data-running='true'] .hero-role-cursor {
+  animation: hero-role-caret-blink 1.05s ease-in-out infinite;
+}
+
+@keyframes hero-role-caret-blink {
+  0%,
+  40%,
+  100% {
+    opacity: 1;
+  }
+  50%,
+  90% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-role-icon-in {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-typewriter .hero-role-text {
+    font-size: 0.92em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-typewriter .hero-role-emoji,
+  .hero-typewriter .hero-role-cursor {
+    animation: none !important;
+    opacity: 1;
+  }
+}

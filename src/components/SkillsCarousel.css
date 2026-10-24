@@ -1,0 +1,500 @@
+/* Scoped to Skills: the existing heading, introduction, footer and global styles stay intact. */
+.skills-section .skills-carousel {
+  display: block;
+  border: 0;
+  position: relative;
+  isolation: isolate;
+}
+/* A separate, bounded layer: neither the stars nor the light rotate with the orbit. */
+.skills-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: clip;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at 50% 57%, #000 28%, transparent 73%);
+}
+.skills-nebula {
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(ellipse at 28% 54%, #743da43b, transparent 47%),
+    radial-gradient(ellipse at 75% 62%, #25878126, transparent 43%),
+    radial-gradient(ellipse at 56% 38%, #494b8d28, transparent 45%),
+    radial-gradient(ellipse at 48% 83%, #b69a6317, transparent 40%);
+  animation: skills-light-drift 32s ease-in-out infinite alternate;
+}
+.skills-star {
+  position: absolute;
+  width: var(--star-size);
+  height: var(--star-size);
+  border-radius: 50%;
+  background: rgb(var(--star-color));
+  box-shadow: 0 0 5px rgb(var(--star-color) / 0.22);
+  opacity: 0.28;
+  animation: skills-star-twinkle var(--star-duration) ease-in-out var(--star-delay) infinite
+    alternate;
+}
+.skills-star.is-sparkle {
+  border-radius: 0;
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+}
+.skills-star.is-drifting {
+  animation:
+    skills-star-twinkle var(--star-duration) ease-in-out var(--star-delay) infinite alternate,
+    skills-star-drift 29s ease-in-out var(--star-delay) infinite alternate;
+}
+.skills-carousel[data-atmosphere-active='false'] .skills-nebula,
+.skills-carousel[data-atmosphere-active='false'] .skills-star {
+  animation-play-state: paused;
+}
+@keyframes skills-light-drift {
+  from {
+    transform: translate(-1%, 1%) scale(1);
+  }
+  to {
+    transform: translate(2%, -1%) scale(1.04);
+  }
+}
+@keyframes skills-star-twinkle {
+  from {
+    opacity: 0.12;
+    scale: 0.85;
+  }
+  to {
+    opacity: 0.55;
+    scale: 1.1;
+  }
+}
+@keyframes skills-star-drift {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 5px -8px;
+  }
+}
+.skill-rotation-control {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #b69a6326;
+  border-radius: 50%;
+  background: #181717a6;
+  color: #b6a37e;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.skill-rotation-control:hover,
+.skill-rotation-control:focus-visible {
+  color: #e0c99f;
+  border-color: #b69a6370;
+}
+.skill-category-stage {
+  position: relative;
+  height: 185px;
+  perspective: 1000px;
+  overflow: clip;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  border-radius: 8px;
+}
+.skill-category-stage:focus-visible,
+.skill-orbit-stage:focus-visible {
+  outline-offset: -3px;
+}
+.skill-category-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.skill-category-slot {
+  position: absolute;
+  width: min(320px, 76%);
+  top: 12px;
+  left: 50%;
+  margin-left: max(-160px, -38%);
+  transform-style: preserve-3d;
+  pointer-events: auto;
+}
+.skills-section .skills-carousel .skill-category-card {
+  position: relative;
+  height: 140px;
+  min-height: 0;
+  padding: 20px 23px;
+  border: 1px solid #33302b;
+  border-radius: 5px;
+  background: #151515;
+  box-shadow: 0 10px 24px #0003;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+.skills-section .skills-carousel .skill-category-card[data-active='true'] {
+  background: #1c1c1c;
+  border-color: #8c7752;
+}
+.skills-section .skills-carousel .skill-card-top {
+  margin-bottom: 14px;
+}
+.skills-section .skills-carousel .skill-category-card h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  margin: 0;
+  font-weight: 500;
+}
+.skill-category-card h3 > button {
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}
+.skill-category-card h3 > button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+}
+.skill-category-card:focus-within {
+  border-color: var(--gold);
+}
+.skill-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+.skill-navigation > button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #494237;
+  color: #cbb792;
+  background: #191816;
+  border-radius: 50%;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+.skill-navigation > button:hover {
+  background: #24221d;
+  border-color: var(--gold);
+}
+.skill-navigation > span {
+  width: 65px;
+  text-align: center;
+  color: #d1bd98;
+}
+.skill-navigation > span > span {
+  color: #898173;
+}
+.skill-category-navigation {
+  margin: 0 0 12px;
+}
+.skill-wheel-panel {
+  min-width: 0;
+}
+.skill-orbit-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  perspective: 1100px;
+  /* Contain the previous orbit radius while ResizeObserver catches up after a resize. */
+  overflow-x: clip;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  border-radius: 8px;
+}
+.skill-orbit-plane {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.skill-orbit-guide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  overflow: visible;
+  pointer-events: none;
+}
+.skill-orbit-guide > path {
+  fill: none;
+  stroke: #33302b;
+  stroke-width: 1;
+}
+.skill-orbit-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+}
+.skill-orbit-tag {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  pointer-events: auto;
+}
+.skill-orbit-face {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #35322d;
+  border-radius: 50%;
+  background: #191919;
+  box-shadow:
+    inset 0 1px 0 #ffffff0b,
+    0 5px 12px #0003;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.skill-orbit-tag:hover .skill-orbit-face {
+  border-color: #84714f;
+}
+.skill-orbit-tag[aria-pressed='true'] .skill-orbit-face {
+  border-color: var(--gold);
+  background: #1c1c1c;
+  box-shadow:
+    inset 0 1px 0 #ffffff12,
+    0 0 18px rgb(var(--skill-brand) / 0.1),
+    0 5px 18px #0003;
+}
+.skill-artwork {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.skill-artwork > img,
+.skill-artwork > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.skill-artwork.is-pair {
+  width: 44px;
+}
+.skill-artwork.is-pair > img {
+  width: calc((100% - 4px) / 2);
+}
+.skill-orbit-tooltip {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 10px);
+  translate: -50% 0;
+  width: max-content;
+  max-width: 200px;
+  padding: 6px 10px;
+  border: 1px solid #494237;
+  border-radius: 4px;
+  background: #20201f;
+  color: #eee9e0;
+  box-shadow: 0 4px 12px #0004;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.16s ease,
+    visibility 0.16s ease;
+}
+.skill-orbit-node:hover,
+.skill-orbit-node:focus-within {
+  z-index: 8;
+}
+.skill-orbit-node:hover .skill-orbit-tooltip,
+.skill-orbit-node:focus-within .skill-orbit-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .skill-orbit-tag:hover .skill-orbit-face {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+      0 0 18px rgb(var(--skill-brand) / 0.12),
+      inset 0 1px 0 #ffffff16,
+      0 7px 14px #0004;
+  }
+}
+.skill-orbit-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 190px;
+  height: 190px;
+  padding: 14px;
+  display: grid;
+  grid-template-rows: 56px minmax(0, 1fr) 18px;
+  justify-items: center;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #33302b;
+  border-radius: 50%;
+  background: #151515;
+  box-shadow:
+    inset 0 1px 0 #ffffff17,
+    inset 0 -10px 18px #0003,
+    0 0 32px rgb(var(--skill-brand) / 0.09);
+  transition: box-shadow 0.3s ease;
+  text-align: center;
+  pointer-events: none;
+  isolation: isolate;
+  z-index: 1;
+}
+.skill-orbit-hub::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 50% 33%, rgb(var(--skill-brand) / 0.15), transparent 68%);
+  z-index: -1;
+}
+.skill-orbit-hub::after {
+  content: '';
+  position: absolute;
+  inset: 2px 14px 53%;
+  border-radius: 50%;
+  background: linear-gradient(155deg, #ffffff0e, #ffffff02 60%, transparent);
+  z-index: -1;
+}
+.skill-hub-logo,
+.skill-hub-artwork {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+}
+.skill-hub-artwork .skill-artwork,
+.skill-selection-flight .skill-artwork {
+  width: 100%;
+  height: 100%;
+}
+.skill-hub-artwork .skill-artwork.is-pair,
+.skill-selection-flight .skill-artwork.is-pair {
+  width: 100%;
+}
+.skill-selection-flight {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 12;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(var(--skill-brand) / 0.1), transparent 72%);
+}
+.skill-selected-name {
+  width: 100%;
+  min-height: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.skill-selected-name > span {
+  display: block;
+}
+.skill-orbit-hub .eyebrow {
+  font-size: 11px;
+  color: #8c8374;
+  line-height: 1.4;
+}
+.is-compact .skill-orbit-hub {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  grid-template-rows: 40px 54px 14px;
+  align-content: center;
+  gap: 4px;
+  box-shadow:
+    inset 0 1px 0 #ffffff12,
+    0 0 20px rgb(var(--skill-brand) / 0.06);
+}
+.is-compact .skill-hub-logo,
+.is-compact .skill-hub-artwork {
+  width: 40px;
+  height: 40px;
+}
+.is-compact .skill-selected-name {
+  font-size: 14px;
+  line-height: 1.25;
+}
+.is-compact .skill-orbit-node,
+.is-compact .skill-orbit-tag {
+  width: 52px;
+  height: 52px;
+}
+.is-compact .skill-orbit-face > .skill-artwork {
+  width: 28px;
+  height: 28px;
+}
+.is-compact .skill-orbit-face > .skill-artwork.is-pair {
+  width: 36px;
+}
+.is-compact .skill-orbit-tooltip {
+  display: none;
+}
+.skill-interaction-help {
+  margin: 22px auto 30px;
+  max-width: 560px;
+  text-align: center;
+  color: #898173;
+  font-size: 12px;
+  line-height: 1.8;
+}
+@media (max-width: 680px) {
+  .skills-section .skills-carousel .skill-category-card {
+    padding: 18px;
+  }
+  .skill-category-stage {
+    height: 185px;
+  }
+  .skill-interaction-help {
+    max-width: 290px;
+    margin-bottom: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skills-nebula,
+  .skills-star,
+  .skills-star.is-drifting {
+    animation: none;
+  }
+  .skills-section .skills-carousel .skill-category-card,
+  .skill-orbit-face,
+  .skill-orbit-tooltip,
+  .skill-orbit-hub,
+  .skill-navigation > button {
+    transition: none;
+  }
+}
