@@ -2,6 +2,8 @@
 
 A complete React, Vite, and TypeScript portfolio with a cinematic dark cover, original portraits, seven genuine projects, a certificate archive, and shared-element transitions. The design uses a charcoal base, warm typography, and restrained champagne accents.
 
+Live portfolio: [jafeer-abdullah-portfolio.vercel.app](https://jafeer-abdullah-portfolio.vercel.app)
+
 The header, footer, and browser icon use the `Abu.` wordmark. Jafeer Abdullah remains the portfolio's name and identity.
 
 ## Run locally
