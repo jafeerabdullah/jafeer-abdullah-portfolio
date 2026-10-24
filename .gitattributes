@@ -9,6 +9,7 @@
 *.mp4 binary
 *.woff binary
 *.woff2 binary
+public/google*.html -text
 
 # Preserve the official logo and license source bytes, including line endings.
 public/icons/skills/*.svg binary
