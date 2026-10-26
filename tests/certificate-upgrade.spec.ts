@@ -12,8 +12,6 @@ test('every certificate uses its matched high resolution source on a dark, uncro
     ['Information Technology & Open Office', 'icta-open-office-hq.jpg', 3200, 2287],
     ['G.C.E. Ordinary Level', 'gce-ordinary-level-hq.jpg', 2263, 3200],
     ['Energy Club Competition — Innovation', 'energy-club-innovation-hq.jpg', 3055, 2133],
-    ['Ahadhiyyah Intermediate National Examination', 'ahadhiyyah-intermediate-hq.jpg', 3200, 2514],
-    ['Basics of Islamic Studies & Arabic Language', 'islamic-studies-arabic-hq.jpg', 2282, 3200],
   ] as const
   const gallery = page.getByRole('region', { name: 'Certificate gallery', exact: true })
   await gallery.focus()

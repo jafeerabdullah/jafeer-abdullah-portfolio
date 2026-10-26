@@ -64,3 +64,5 @@ These steps require the owner's Google account. No ownership verification, index
 References: [Google's JavaScript SEO guidance](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics), [canonical URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), and [ownership verification](https://support.google.com/webmasters/answer/9008080).
 
 Optional owner checks: [Rich Results Test](https://search.google.com/test/rich-results) and [PageSpeed Insights](https://pagespeed.web.dev/). Person/WebSite schema describes the portfolio; it does not promise a Google rich result.
+
+
