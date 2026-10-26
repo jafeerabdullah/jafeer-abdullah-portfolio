@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { certifications, profile, projects, skillGroups } from '../src/data/portfolio'
-import { seo } from '../src/data/seo'
+import { portraitImages, seo } from '../src/data/seo'
 
 test('initial HTML includes real content and unique production metadata', async ({ page, request }) => {
   const response = await request.get('/')
@@ -48,9 +48,20 @@ test('robots, the one-page sitemap, image metadata, and internal links resolve',
   const locations = await page.evaluate((source) => {
     const document = new DOMParser().parseFromString(source, 'application/xml')
     if (document.querySelector('parsererror')) throw new Error('Invalid sitemap XML')
-    return [...document.querySelectorAll('loc')].map((node) => node.textContent)
+    return [...document.getElementsByTagNameNS('http://www.sitemaps.org/schemas/sitemap/0.9', 'loc')].map((node) => node.textContent)
   }, xml)
   expect(locations).toEqual([seo.url])
+  const imageLocations = await page.evaluate((source) => {
+    const document = new DOMParser().parseFromString(source, 'application/xml')
+    return [...document.getElementsByTagNameNS('http://www.google.com/schemas/sitemap-image/1.1', 'loc')].map((node) => node.textContent)
+  }, xml)
+  expect(imageLocations).toEqual(portraitImages.map((image) => new URL(image.path, seo.url).href))
+  for (const image of portraitImages) {
+    const imageResponse = await request.get(image.path)
+    expect(imageResponse.status()).toBe(200)
+    expect(imageResponse.headers()['content-type']).toContain(image.encodingFormat)
+    expect(imageResponse.headers()['x-robots-tag'] || '').not.toContain('noindex')
+  }
   expect(await page.locator('img:not([alt])').count()).toBe(0)
   const missingAnchors = await page.locator('a[href^="#"]').evaluateAll((links) => links
     .map((link) => link.getAttribute('href')!)
@@ -61,6 +72,28 @@ test('robots, the one-page sitemap, image metadata, and internal links resolve',
   for (const path of paths) expect((await request.get(path)).status(), path).toBe(200)
   await expect(page.locator('link[rel="preload"][as="font"]')).toHaveCount(2)
   await expect(page.locator('link[rel="preload"][as="image"]')).toHaveCount(1)
+})
+
+test('profile and both portraits are linked in the initial structured data', async ({ request }) => {
+  const source = await (await request.get('/')).text()
+  const match = source.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)
+  expect(match).not.toBeNull()
+  const graph = JSON.parse(match![1])['@graph']
+  const profilePage = graph.find((entry: { '@type': string }) => entry['@type'] === 'ProfilePage')
+  const person = graph.find((entry: { '@type': string }) => entry['@type'] === 'Person')
+  const images = graph.filter((entry: { '@type': string }) => entry['@type'] === 'ImageObject')
+  expect(profilePage.mainEntity['@id']).toBe(person['@id'])
+  expect(profilePage.url).toBe(seo.url)
+  expect(images).toHaveLength(2)
+  expect(person.image.map((image: { '@id': string }) => image['@id'])).toEqual(images.map((image: { '@id': string }) => image['@id']))
+  expect(profilePage.primaryImageOfPage['@id']).toBe(images[0]['@id'])
+  for (const [index, image] of images.entries()) {
+    expect(image.contentUrl).toBe(new URL(portraitImages[index].path, seo.url).href)
+    expect(image.caption).toContain(profile.name)
+    expect(image.about['@id']).toBe(person['@id'])
+    expect(image.width).toBe(portraitImages[index].width)
+    expect(image.height).toBe(portraitImages[index].height)
+  }
 })
 
 test('the updated resume is served byte for byte and About uses the full name', async ({ page, request }) => {
@@ -79,6 +112,9 @@ test('visitors without JavaScript can browse real work and documents on mobile',
     const page = await context.newPage()
     await page.goto(baseURL!)
     await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
+    for (const image of portraitImages) {
+      await expect(page.locator(`.static-portfolio img[src="${image.path}"]`)).toBeVisible()
+    }
     await expect(page.getByRole('link', { name: 'Download résumé' })).toBeVisible()
     for (const project of projects) await expect(page.getByRole('link', { name: `View ${project.shortTitle} source on GitHub`, exact: true })).toBeVisible()
     for (const certificate of certifications) await expect(page.getByRole('link', { name: `View ${certificate.title} document`, exact: true })).toBeVisible()

@@ -4,6 +4,8 @@ A complete React, Vite, and TypeScript portfolio with a cinematic dark cover, or
 
 Live portfolio: [jafeer-abdullah-portfolio.vercel.app](https://jafeer-abdullah-portfolio.vercel.app)
 
+Legacy link: [abdullah-portfolio-five-phi.vercel.app](https://abdullah-portfolio-five-phi.vercel.app/) permanently redirects to the live portfolio. This redirect is configured on the existing Vercel project's domain settings and remains separate from the app's page routes.
+
 The header, footer, and browser icon use the `Abu.` wordmark. Jafeer Abdullah remains the portfolio's name and identity.
 
 ## Run locally
@@ -35,7 +37,7 @@ npm run preview
 - The certificate archive includes seven unique documents: two Cisco course completion PDFs, ICTA / Open Office training, G.C.E. Ordinary Level, an Energy Club innovation award, the Ahadhiyyah intermediate examination, and Islamic Studies / Arabic Language. The two photos of the same Energy Club award are represented once. The ICTA certificate's printed recipient is preserved as supplied and confirmed by the owner.
 - `/certificates/` serves five new high-resolution TapScanner JPEG scans, copied byte for byte for both preview and download. The two original Cisco PDFs are preserved, with sharp, lossless PNG previews rendered directly at 3× resolution. Preview images retain every source pixel and their complete official borders; lazy loading and asynchronous decoding avoid unnecessary initial work. Technical credentials, academic records, and other achievements have separate filters. Both Cisco courses link to the supplied Credly badge pages. Credential levels are stated as printed; course completion is not presented as professional certification.
 - Fonts and images are served locally. Project screenshots and the cover portrait use optimized WebP files; the About photo is the original JPEG, and certificates use the high-resolution formats described above. No visitor-facing AI services or remote image requests are used.
-- On Vercel, `vite.config.ts` derives the canonical URL and absolute social-image URLs from the public `VERCEL_PROJECT_PRODUCTION_URL` system variable, falling back to `VERCEL_URL`. Local builds use the local social-image path and omit a canonical URL. No private credentials are read or embedded in the client bundle.
+- `src/data/seo.ts` defines the verified production canonical and absolute social-image URLs. `vite.config.ts` inserts these values during the build, including previews, so preview URLs never become canonical. Development and preview builds request `noindex`; production builds allow indexing. No private credentials are read or embedded in the client bundle.
 
 ## Contact form
 
@@ -123,6 +125,6 @@ Generated builds, installed dependencies, test output, local environment files, 
 
 Production builds render the existing React portfolio to HTML before hydration. The visual design and interactive components remain the same. A browsable `<noscript>` document uses the same project, skill, and certificate data for visitors with JavaScript disabled. Critical fonts and the hero image are preloaded; the Three.js scene stays lazy.
 
-`src/data/seo.ts` defines the canonical URL, sharing metadata, and Person/WebSite structured data. `public/robots.txt` and `public/sitemap.xml` describe the actual single-page site. Preview builds use `noindex` while keeping the production canonical.
+`src/data/seo.ts` defines the canonical URL, sharing metadata, and linked WebSite, ProfilePage, Person, and portrait ImageObject structured data. The image sitemap explicitly lists the two actual portraits. Both are also available in the JavaScript-disabled document with descriptive captions. `public/robots.txt` permits crawling; preview builds use `noindex` while keeping the production canonical.
 
 See [SEO.md](SEO.md) for validation results, measurements, and the remaining Google Search Console ownership and indexing steps.

@@ -2,15 +2,27 @@
 
 Production: https://jafeer-abdullah-portfolio.vercel.app/
 
+## Deployment and portrait discovery update — 26 October 2026
+
+The reported `https://abdullah-portfolio-five-phi.vercel.app/` returned Vercel's `404 DEPLOYMENT_NOT_FOUND` for fresh Chrome, Edge, and bot user agents. The active project and production deployment were healthy at the canonical production URL above. The old hostname was absent from the project domains; it is now a verified project domain with a permanent **308** redirect to `jafeer-abdullah-portfolio.vercel.app`. A new request to the legacy address follows that redirect to **200 OK**. Because the redirect is a project domain setting, it follows future production deployments.
+
+The existing portraits were already public image files with descriptive HTML image elements and name-based alternative text. This update adds both URLs to the homepage's image sitemap and links each ImageObject to the real Person and ProfilePage. Image dimensions match the supplied files: studio WebP 1448 × 1086, outdoor JPEG 960 × 1280. The JavaScript-disabled document also displays the same two portraits with captions. No portrait was regenerated, altered, or replaced, and the interactive layout and production stylesheet are unchanged.
+
+The production build and seven focused SEO/browser checks passed, including sitemap image URLs, MIME types, structured-data links, mobile access without JavaScript, and hydration with normal and reduced motion. This is technical verification of crawlability, not proof that a search engine has indexed or ranked the photos.
+
+Use the **canonical production URL** as the Search Console URL-prefix property. The existing HTML verification file remains public. After the update is deployed, submit or resubmit `https://jafeer-abdullah-portfolio.vercel.app/sitemap.xml`, inspect the homepage with **Test live URL**, and choose **Request indexing**. If searching with Bing in Edge, submit the same sitemap in Bing Webmaster Tools as well. These are owner-account actions; no Search Console or Bing indexing submission is claimed here.
+
+Search engines decide whether and when photos appear for a name query. Their recrawl and ranking decisions cannot be forced by metadata or a deployment. See Google's [image discovery guidance](https://developers.google.com/search/docs/appearance/google-images), [image sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps), and [recrawl requests](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
+
 ## Audit and implementation
 
 The site is React + TypeScript + Vite, hosted on Vercel. It has one homepage with section anchors; project details are dialogs, not separate routes. No custom domain was configured in the inspected Vercel account.
 
 Before this update, sharing tags and a production canonical existed, but the HTML app container was empty. There was no robots.txt, sitemap, or JSON-LD. Metadata now comes from `src/data/seo.ts` through the Vite HTML plugin, using the verified production domain for every build. Preview deployments and development use `noindex, follow`; production uses `index, follow, max-image-preview:large`. Vercel's deployment protection remains unchanged.
 
-The page has one descriptive title and description, one canonical, complete Open Graph and Twitter card tags, image dimensions and alternative text, and accurate Person/WebSite JSON-LD. Profile information and skills come from the actual portfolio data. No invented project URLs, qualifications, employment, ratings, or search functionality are included.
+The page has one descriptive title and description, one canonical, complete Open Graph and Twitter card tags, image dimensions and alternative text, and accurate WebSite/ProfilePage/Person/ImageObject JSON-LD. Profile information and skills come from the actual portfolio data. No invented project URLs, qualifications, employment, ratings, or search functionality are included.
 
-`public/sitemap.xml` contains only the canonical homepage, with no fragment URLs or fabricated last-modified dates. `public/robots.txt` permits crawling and identifies the sitemap. If a custom production domain is added later, update the SEO configuration and both files together, then set the preferred domain in Vercel.
+`public/sitemap.xml` contains the canonical homepage and its two portrait image entries, with no fragment page URLs or fabricated last-modified dates. `public/robots.txt` permits crawling and identifies the sitemap. If a custom production domain is added later, update the SEO configuration and both files together, then set the preferred domain in Vercel.
 
 ## Rendering and assets
 
